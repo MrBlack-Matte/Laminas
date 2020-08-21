@@ -1,0 +1,32 @@
+<?php
+
+$title = 'My Contacts';
+$this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+<p>
+    <a href="<?=$this->url('album', ['action'=>'add'])?>"><button class ="btn btn-primary">Add New</button></a>
+</p>
+
+<table class="table table-bordered">
+<tr>
+
+    <th>Ttitle</th>
+    <th>Artist</th>
+    <th>Action</th>
+</tr>
+<?php foreach ($albums as $album1) : ?>
+
+<tr>
+
+    <td><?=$this->escapeHtml($album1->title)?></td>
+    <td><?=$this->escapeHtml($album1->artist)?></td>
+    <td>
+        <a href="<?= $this->url('album',['action'=>'edit', 'id'=> $album1->id])?>"><button class = "btn btn-info">Edit</button></a> &nbsp; | &nbsp;
+        <a href="<?= $this->url('album',['action'=>'delete', 'id'=> $album1->id])?>"><button class = "btn btn-danger">Delete</button></a>
+        </td>
+</tr>
+
+
+<?php endforeach;?>
+</table>
